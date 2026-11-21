@@ -23,7 +23,7 @@ class DioClient {
       },
     );
     this.dio.interceptors.removeImplyContentTypeInterceptor();
-    this.dio.interceptors.add(AuthInterceptor(secureStorage));
+    this.dio.interceptors.add(AuthInterceptor(secureStorage, this.dio));
     this.dio.interceptors.add(ErrorInterceptor());
   }
 

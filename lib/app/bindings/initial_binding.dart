@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../core/config/app_config.dart';
 import '../../core/network/dio_client.dart';
+import '../../core/session/session_service.dart';
 import '../../core/storage/local_storage_service.dart';
 import '../../core/storage/secure_storage_service.dart';
 import '../../data/storage/flutter_secure_key_value_store.dart';
@@ -20,6 +21,13 @@ class InitialBinding extends Bindings {
       DioClient(
         config: Get.find<AppConfig>(),
         secureStorage: Get.find<SecureStorageService>(),
+      ),
+      permanent: true,
+    );
+    Get.put<SessionService>(
+      SessionService(
+        secureStorage: Get.find<SecureStorageService>(),
+        dioClient: Get.find<DioClient>(),
       ),
       permanent: true,
     );

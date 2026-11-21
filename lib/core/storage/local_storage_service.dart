@@ -1,9 +1,8 @@
-/// Stockage local non sensible (prévu pour le cache et les préférences légères).
-///
-/// Implémentation mémoire provisoire pour M0. Une persistance (Hive/Drift)
-/// sera branchée lors des modules concernés sans changer ce contrat.
+/// Stockage local non sensible (préférences et état d'onboarding).
 class LocalStorageService {
   final Map<String, String> _values = <String, String>{};
+
+  static const String onboardingCompletedKey = 'onboarding_completed';
 
   Future<void> writeString({required String key, required String value}) async {
     _values[key] = value;
@@ -17,5 +16,13 @@ class LocalStorageService {
 
   Future<void> clear() async {
     _values.clear();
+  }
+
+  Future<bool> isOnboardingCompleted() async {
+    return _values[onboardingCompletedKey] == 'true';
+  }
+
+  Future<void> setOnboardingCompleted(bool value) async {
+    _values[onboardingCompletedKey] = value.toString();
   }
 }

@@ -1,5 +1,50 @@
-/// Noms de routes. Les parcours métier seront ajoutés ici.
+/// Noms de routes.
 abstract final class AppRoutes {
   static const String splash = '/';
-  static const String designSystemPreview = '/design-system';
+  static const String welcome = '/welcome';
+  static const String onboarding = '/onboarding';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String forgotPassword = '/forgot-password';
+  static const String home = '/home';
+  static const String platformHome = '/platform';
+  static const String superAdminDashboard = '/super-admin/dashboard';
+  static const String superAdminDetail = '/super-admin/detail';
+  static const String superAdminUsers = '/super-admin/users';
+  static const String superAdminUserDetail = '/super-admin/user-detail';
+  static const String companyAdminHome = '/company-admin';
+  static const String agencyManagerHome = '/agency-manager';
+  static const String agentHome = '/agent';
+  static const String driverHome = '/driver';
+  static const String driverTrips = '/driver/trips';
+  static const String driverTripDetail = '/driver/trip-detail';
+  static const String vehicles = '/vehicles';
+  static const String vehicleCreate = '/vehicles/create';
+  static const String vehicleDetail = '/vehicles/detail';
+  static const String trips = '/trips';
+  static const String tripCreate = '/trips/create';
+  static const String tripDetail = '/trips/detail';
+  static const String tripEdit = '/trips/edit';
+  static const String receptionHome = '/reception';
+  static const String reception = '/reception/page';
+  static const String parcels = '/parcels';
+  static const String parcelDetail = '/parcels/detail';
+  static const String parcelWaybill = '/parcels/waybill';
+  static const String parcelCreate = '/parcels/create';
+  static const String shipmentRequest = '/shipment-request';
+  static const String shipmentPayment = '/shipment-payment';
+  static const String companyShipmentRequests = '/company-shipment-requests';
+  static const String notifications = '/notifications';
+  static const String claims = '/claims';
+  static const String claimCreate = '/claims/create';
+  static const String claimDetail = '/claims/detail';
+  static const String companies = '/companies';
+  static const String agencies = '/agencies';
+  static const String agencyCreate = '/agencies/create';
+  static const String agencyDetail = '/agencies/detail';
+  static const String agents = '/agents';
+  static const String agentCreate = '/agents/create';
+  static const String agentDetail = '/agents/detail';
+  static const String platform = '/platform';
+  static const String contextSelection = '/context-selection';
 }

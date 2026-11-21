@@ -36,7 +36,7 @@ void main() {
       final adapter = _CaptureAdapter();
       final dio = Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3000/api/v1/'));
       dio.httpClientAdapter = adapter;
-      dio.interceptors.add(AuthInterceptor(storage));
+      dio.interceptors.add(AuthInterceptor(storage, dio));
 
       await dio.get<void>('ping');
 
@@ -49,7 +49,7 @@ void main() {
       final adapter = _CaptureAdapter();
       dio.httpClientAdapter = adapter;
       dio.interceptors.add(
-        AuthInterceptor(SecureStorageService(_MemoryStore())),
+        AuthInterceptor(SecureStorageService(_MemoryStore()), dio),
       );
 
       await dio.get<void>('ping');

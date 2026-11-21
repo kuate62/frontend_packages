@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:frontend_packages/app/expressio_app.dart';
 import 'package:frontend_packages/core/config/app_config.dart';
 import 'package:frontend_packages/core/network/dio_client.dart';
+import 'package:frontend_packages/core/storage/local_storage_service.dart';
 import 'package:frontend_packages/core/storage/secure_key_value_store.dart';
 import 'package:frontend_packages/core/storage/secure_storage_service.dart';
 import 'package:get/get.dart';
@@ -13,15 +14,11 @@ void main() {
 
   tearDown(Get.reset);
 
-  testWidgets('la route initiale affiche ExpressIO après le binding', (
-    tester,
-  ) async {
+  testWidgets('la route initiale affiche le splash puis redirige', (tester) async {
     await tester.pumpWidget(ExpressioApp(initialBinding: _TestBinding()));
     await tester.pumpAndSettle();
 
-    expect(find.text('ExpressIO'), findsOneWidget);
-    expect(find.text('Gestion et suivi de colis'), findsOneWidget);
-    expect(find.text('Développement'), findsOneWidget);
+    expect(find.text('Envoyez vos colis en toute simplicité'), findsOneWidget);
     expect(Get.isRegistered<DioClient>(), isTrue);
     expect(Get.isRegistered<SecureStorageService>(), isTrue);
   });
@@ -41,6 +38,7 @@ class _TestBinding extends Bindings {
       SecureStorageService(_MemoryStore()),
       permanent: true,
     );
+    Get.put<LocalStorageService>(LocalStorageService(), permanent: true);
     Get.put<DioClient>(
       DioClient(
         config: Get.find<AppConfig>(),
